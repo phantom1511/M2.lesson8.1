@@ -14,8 +14,7 @@ public class Main {
         System.out.println("Please input your word: ");
         Scanner scanner = new Scanner(System.in);
         String sentences = scanner.nextLine();
-        String[] words = new String[]{};
-        words = sentences.split(" ");
+        String[] words = sentences.split(" ");
         Random random = new Random();
         for (int i = 0; i < words.length; i++) {
             String[] synonyms = dictionary.get(words[i]);
@@ -32,8 +31,9 @@ public class Main {
 
         Set<String> keys = dictionary.keySet();
         Collection<String[]> values = dictionary.values();
-        for (int j = 0; j < words.length; j++) {
-            String key = dictionary.toString();
+        Iterator<String> iterator = keys.iterator();
+        while (iterator.hasNext()){
+            String key = iterator.next();
             String[] value = dictionary.get(key);
             bigDictionary.put(key, value);
             for (int k = 0; k < value.length; k++) {
@@ -42,6 +42,11 @@ public class Main {
                 newDictionary.addAll(Arrays.asList(value));
                 newDictionary.remove(newKey);
                 newDictionary.add(key);
+                String[] newValues = new String[newDictionary.size()];
+                newValues = newDictionary.toArray(newValues);
+                System.out.println(newKey + " - " + Arrays.toString(newValues));
+                bigDictionary.put(newKey, newValues);
+            }
             }
 
             /*if (bigDictionary = scanner) {
@@ -53,6 +58,5 @@ public class Main {
                 dictionary.values(sentences);
                 System.out.println(synonyms);
             }*/
-        }
     }
 }
