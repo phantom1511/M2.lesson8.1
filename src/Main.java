@@ -14,7 +14,8 @@ public class Main {
         System.out.println("Please input your word: ");
         Scanner scanner = new Scanner(System.in);
         String sentences = scanner.nextLine();
-        String[] words = sentences.split(" ");
+        String[] words = new String[]{};
+        words = sentences.split(" ");
         Random random = new Random();
         for (int i = 0; i < words.length; i++) {
             String[] synonyms = dictionary.get(words[i]);
